@@ -12,12 +12,13 @@ int main(void)
 	int i = 0;
 	char alpha[] = "abcdefghijklmnopqrstuvwxyz\n";
 
-	for (; i < 27; i++)
+	while (i < 27)
 	{
 		if (alpha[i] == 'e' || alpha[i] == 'q')
 			continue;
 		else
 			putchar(alpha[i]);
+		i++;
 	}
 	return (0);
 }
