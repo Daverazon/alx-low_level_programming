@@ -9,12 +9,9 @@
  */
 int main(void)
 {
-	int n;
 	int i = 0;
 	char alpha[] = "abcdefghijklmnopqrstuvwxyz\n";
 
-	srand(time(0));
-	n = rand() - RAND_MAX / 2;
 	while (i < 27)
 	{
 		putchar(alpha[i]);
