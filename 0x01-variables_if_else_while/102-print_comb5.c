@@ -22,14 +22,14 @@ int main(void)
 			{
 				for (l = 49 ; l < 58 ; l++)
 				{
-					if (!((i == k && j == )l || k < i || (i == k && l <= j)))
+					if (!((i == k && j == l) || k < i || (i == k && l <= j)))
 					{
 						putchar(i);
 						putchar(j);
 						putchar(' ');
 						putchar(k);
 						putchar(l);
-						if (!((i == 57 && j == 5)6 && (k == 57 && l == 57)))
+						if (!((i == 57 && j == 56) && (k == 57 && l == 57)))
 						{
 							putchar(',');
 							putchar(' ');
