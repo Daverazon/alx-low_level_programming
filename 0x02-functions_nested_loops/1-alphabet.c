@@ -10,6 +10,7 @@ void print_alphabet(void)
 	while (letter <= 122)
 	{
 		_putchar(letter);
+		letter++;
 	}
 	_putchar(10);
 }
