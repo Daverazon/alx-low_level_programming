@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	int count, a, b, fib;
+	long int count, a, b, fib;
 
 	fib = 2, a = 1, count = 3;
 	printf("1, 2, ");
@@ -15,10 +15,10 @@ int main(void)
 	{
 		b = fib;
 		fib += a;
-		printf("%d, ", fib);
+		printf("%ld, ", fib);
 		a = b;
 		count++;
 	}
-	printf("%d\n", fib);
+	printf("%ld\n", fib);
 	return (0);
 }
