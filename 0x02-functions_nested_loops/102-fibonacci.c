@@ -19,6 +19,7 @@ int main(void)
 		a = b;
 		count++;
 	}
+	fib += a;
 	printf("%ld\n", fib);
 	return (0);
 }
