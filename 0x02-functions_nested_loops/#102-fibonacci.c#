@@ -7,17 +7,19 @@
  */
 int main(void)
 {
-	long int sum, a, b, fib;
+	long int count, a, b, fib;
 
-	fib = 2, a = 1, sum = 2;
-	while (fib < 4000000)
+	fib = 2, a = 1, count = 3;
+	printf("1, 2, ");
+	while (count < 50)
 	{
 		b = fib;
 		fib += a;
-		if (fib % 2 == 0 && fib < 4000000)
-			sum += fib;
+		printf("%ld, ", fib);
 		a = b;
+		count++;
 	}
+	fib += a;
 	printf("%ld\n", sum);
 	return (0);
 }
