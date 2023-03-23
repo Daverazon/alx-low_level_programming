@@ -4,6 +4,7 @@
 void print_numbers(void)
 {
 	int nums = '0';
+
 	while (nums <= '9')
 	{
 		_putchar(nums);
