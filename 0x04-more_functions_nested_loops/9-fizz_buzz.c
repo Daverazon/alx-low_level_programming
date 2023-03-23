@@ -1,6 +1,11 @@
 #include <stdio.h>
 
-
+/**
+ * main - prints 1-100 replacing multiples of 3 and 5 with Fizz and
+ * Buzz respectively
+ *
+ * Return: Always returns 0
+ */
 int main(void)
 {
 	int i;
