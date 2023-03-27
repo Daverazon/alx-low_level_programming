@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+/**
+ * main - prints the first 98 Fibonacci numbers, starting with 1 and 2
+ *
+ * Return: Always return 0
+ */
+int main(void)
+{
+	long int count, a, b, fib;
+
+	fib = 2, a = 1, count = 3;
+	printf("1, 2, ");
+	while (count < 50)
+	{
+		b = fib;
+		fib += a;
+		printf("%ld, ", fib);
+		a = b;
+		count++;
+	}
+	fib += a;
+	printf("%ld\n", fib);
+	return (0);
+}

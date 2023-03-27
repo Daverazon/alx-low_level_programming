@@ -7,20 +7,19 @@
  */
 int main(void)
 {
-	int count;
-	unsigned long int a, b, fib;
+	long int count, a, b, fib;
 
 	fib = 2, a = 1, count = 3;
 	printf("1, 2, ");
-	while (count < 98)
+	while (count < 50)
 	{
 		b = fib;
 		fib += a;
-		printf("%lu, ", fib);
+		printf("%ld, ", fib);
 		a = b;
 		count++;
 	}
 	fib += a;
-	printf("%lu\n", fib);
+	printf("%ld\n", sum);
 	return (0);
 }
