@@ -1,24 +1,23 @@
-#include "main.h"
+#include "holberton.h"
 
 /**
- * _strncat - concatenates two strings
- * @dest: string to be updated
- * @src: string to be copied
- * @n: number of bytes of src to be copied
- * Return: pointer to the updated string
+ * _strncat - Concatenates two strings using at most
+ *            an inputted number of bytes from src.
+ * @dest: The string to be appended upon.
+ * @src: The string to be appended to dest.
+ * @n: The number of bytes from src to be appended to dest.
+ *
+ * Return: A pointer to the resulting string dest.
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int i = 0, new = 0, null;
+	int index = 0, dest_len = 0;
 
-	while (dest[i++])
-		null = i;
-	while (new + 1 <= n)
-	{
-		dest[null] = src[new];
-		null++;
-		new++;
-	}
+	while (dest[index++])
+		dest_len++;
+
+	for (index = 0; src[index] && index < n; index++)
+		dest[dest_len++] = src[index];
 
 	return (dest);
 }
