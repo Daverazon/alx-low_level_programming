@@ -23,7 +23,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	while (s1[i])
 		i++;
 	/*i is now the index of the null byte in s1*/
-	new = malloc(i + n + 2);
+	new = malloc(sizeof(char) * (i + n + 2));
 	if (new == NULL)
 		return (NULL);
 
@@ -39,6 +39,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		j++;
 	}
 	new[new1] = '\0';
-	
+
 	return (new);
 }
