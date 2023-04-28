@@ -1,3 +1,5 @@
+/*1. Don't swap horses in crossing a stream*/
+/*Write a function that swaps the values of two integers*/
 #include "main.h"
 
 /**
@@ -7,9 +9,8 @@
  */
 void swap_int(int *a, int *b)
 {
-	int x;
+	int temp = *a;
 
-	x = *a;
 	*a = *b;
-	*b = x;
+	*b =  temp;
 }
