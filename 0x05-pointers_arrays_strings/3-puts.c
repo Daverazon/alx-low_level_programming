@@ -1,8 +1,4 @@
-/*
-* Write a function that prints a string, followed by a new line, to stdout.
-* FYI: The standard library provides a similar function: puts.
-* Run man puts to learn more.
-*/
+/*Write a function that prints a string, followed by a new line, to stdout*/
 
 #include "main.h"
 
@@ -14,8 +10,9 @@ void _puts(char *str)
 {
 	int i = 0;
 
-	do {
+	while (str[i])
+	{
 		_putchar(str[i]);
-	} while (str[++i]);
+	}
 	_putchar('\n');
 }

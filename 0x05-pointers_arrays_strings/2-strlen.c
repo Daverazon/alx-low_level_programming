@@ -1,8 +1,4 @@
-/*
-* Write a function that returns the length of a string.
-* FYI: The standard library provides a similar function: strlen.
-* Run man strlen to learn more.
-*/
+/*Write a function that returns the length of a string*/
 
 #include "main.h"
 
@@ -13,10 +9,13 @@
  */
 int _strlen(char *s)
 {
-	int i = 0;
+	int i = 0, len = 0;
 
-	while (s[++i])
-	;
+	while (s[i])
+	{
+		len++;
+		i++;
+	}
 	/*i is now at the index of the null terminating byte*/
 
 	return (i);
