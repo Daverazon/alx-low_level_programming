@@ -1,3 +1,9 @@
+/*
+* Write a function that prints half of a string, followed by a new line.
+* The function should print the second half of the string
+* If the number of characters is odd, the function should print the last n
+* characters of the string, where n = (length_of_the_string - 1) / 2
+*/
 #include "main.h"
 
 /**
@@ -6,28 +12,20 @@
  */
 void puts_half(char *str)
 {
-	int i = 0, start;
+	int len = 0, index = 0;
 
-	while (*(str + i))
-		i++;
-	start = i / 2;
-
-	if (i % 2 == 0)
+	while (str[index++])
+		len++;
+	/*len is index of null character*/
+	if (len % 2 == 1)
 	{
-		while (*(str + start))
-		{
-			_putchar(*(str + start));
-			start++;
-		}
+		for (index = (len - 1) / 2 + 1; str[index]; index++)
+			_putchar(str[index]);
 	}
 	else
 	{
-		start = (i + 1) / 2;
-		while (*(str + start))
-		{
-			_putchar(*(str + start));
-			start++;
-		}
+		for (index = len / 2; str[index]; index++)
+			_putchar(str[index]);
 	}
 	_putchar('\n');
 }

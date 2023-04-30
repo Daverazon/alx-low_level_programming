@@ -9,15 +9,16 @@
  */
 void rev_string(char *s)
 {
-	int rev = 0, new;
-	char revstr[new];
+	int len = 0, index = 0;
+	char temp;
 
-	while (s[++rev])
-	;/*rev is index of null terminating byte*/
-	new = rev + 1;/*revstr is now same size as s*/
-	rev -= 1;/*rev is index of character before null terminating byte*/
-	for (new = 0; rev >= 0; rev--, new++)
-		revstr[new] = s[rev];
-	revstr[new] 
-	
+	while (s[index++])
+		len++;
+	/*len is now the index of the null character*/
+	for (index = len - 1; len / 2 <= index; index--)
+	{
+		temp = s[index];
+		s[index] = s[len - index - 1];
+		s[len - index - 1] = temp;
+	} /*used swapping method to reverse*/
 }
