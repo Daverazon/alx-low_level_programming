@@ -1,3 +1,7 @@
+/*
+* Write a function that reverses the content of an array of integers.
+* Where n is the number of elements of the array
+*/
 #include "main.h"
 
 /**
@@ -7,12 +11,12 @@
  */
 void reverse_array(int *a, int n)
 {
-	int tmp, index;
+	int temp, index = 0;
 
-	for (index = n - 1; index >= n / 2; index--)
+	for (; index <= n / 2 ; index++)
 	{
-		tmp = a[n - 1 - index];
-		a[n - 1 - index] = a[index];
-		a[index] = tmp;
+		temp = *(a + index);
+		*(a + index) = *(a + n - index - 1);
+		*(a + n - index - 1) = temp;
 	}
 }
