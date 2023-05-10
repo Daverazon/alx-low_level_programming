@@ -21,9 +21,9 @@ char *cap_string(char *str)
 	{
 		for (iter = 0; separator[iter]; iter++)
 		{
-			if (str[index] == separator[iter]
-			    && str[index + 1] >= 'a' && str[index + 1] <= 'z')
-				str[index + 1] -= 32;
+			if ((index == 0 || str[index - 1] == separator[iter])
+			    && str[index] >= 'a' && str[index] <= 'z')
+				str[index] -= 32;
 		}
 	}
 	return (str);
