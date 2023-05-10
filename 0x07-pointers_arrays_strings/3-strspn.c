@@ -1,3 +1,8 @@
+/*
+* Write a function that gets the length of a prefix substring.
+* Returns the number of bytes in the initial segment of s
+* which consist only of bytes from accept
+*/
 #include "main.h"
 
 /**
@@ -9,25 +14,18 @@
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int bytes = 0;
-	int index;
+	unsigned int index, sub, prev, count = 0;
 
-	while (*s)
+	for (index = 0; s[index]; index++)
 	{
-		for (index = 0; accept[index]; index++)
+		prev = count;
+		for (sub = 0; accept[sub]; sub++)
 		{
-			if (*s == accept[index])
-			{
-				bytes++;
-				break;
-			}
-
-			else if (accept[index + 1] == '\0')
-				return (bytes);
+			if (s[index] == accept[sub])
+				count += 1;
 		}
-
-		s++;
+		if (count == prev)
+			break;
 	}
-
-	return (bytes);
+	return (count);
 }
