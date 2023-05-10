@@ -21,15 +21,16 @@
 char *leet(char *str)
 {
 	char leet[] = "A4E3O0T7L1";
-	int index, check;
+	int index = 0, check;
 
-	for (index = 0; str[index]; index++)
+	while (str[index])
 	{
 		for (check = 0; leet[check]; check += 2)
 		{
 			if (str[index] == leet[check] || str[index] == leet[check] + 32)
 				str[index] = leet[check + 1];
 		}
+		index++;
 	}
 	return (str);
 }
