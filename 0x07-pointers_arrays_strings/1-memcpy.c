@@ -1,3 +1,9 @@
+/*
+* Write a function that copies memory area.
+* The _memcpy() function copies n bytes from memory
+* area src to memory area dest
+* Returns a pointer to dest
+*/
 #include "main.h"
 
 /**
@@ -10,11 +16,9 @@
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
 	unsigned int index;
-	char *destination = dest;
-	const char *source = src;
 
 	for (index = 0; index < n; index++)
-		destination[index] = source[index];
+		dest[index] = src[index];
 
 	return (dest);
 }
