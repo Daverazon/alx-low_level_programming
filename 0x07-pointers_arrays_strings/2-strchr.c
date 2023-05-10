@@ -21,7 +21,8 @@ char *_strchr(char *s, char c)
 	;
 
 	for (index = 0; index < len; index++)
-	{	if (s[index] == c)
+	{
+		if (s[index] == c)
 			return (s + index);
 	}
 
