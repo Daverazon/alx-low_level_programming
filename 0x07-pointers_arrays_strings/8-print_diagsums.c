@@ -1,3 +1,11 @@
+/*
+* Write a function that prints the sum of the two diagonals of
+* a square matrix of integers.
+* You are allowed to use the standard library. Note that in
+* the following example we are casting an int[][] into an int*. This
+* is not something you should do. The goal here is to make sure you understand
+* how an array of array is stored in memory
+*/
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -10,21 +18,12 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int index, sum1 = 0, sum2 = 0;
+	int row, column, rsum = 0, lsum = 0;
 
-	for (index = 0; index < size; index++)
-	{
-		sum1 += a[index];
-		a += size;
-	}
+	for (row = 0, column = 0; row < size; row++, column++)
+		rsum += *(a + row * size + column);
+	for (row = 0, column = size - 1; row < size; row++, column--)
+		lsum += *(a + row * size + column);
 
-	a -= size;
-
-	for (index = 0; index < size; index++)
-	{
-		sum2 += a[index];
-		a -= size;
-	}
-
-	printf("%d, %d\n", sum1, sum2);
+	printf("%d, %d\n", rsum, lsum);
 }
