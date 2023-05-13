@@ -19,6 +19,9 @@ char *_strstr(char *haystack, char *needle)
 	int n;
 	char *nfound;
 
+	if (*needle == 0)
+		return (haystack);
+
 	while (*haystack)
 	{
 		n = 0;
@@ -29,9 +32,9 @@ char *_strstr(char *haystack, char *needle)
 			for (; needle[n]; haystack++, n++)
 			{
 				if (*haystack != needle[n])
-					{
-						haystack = nfound;
-						break;
+				{
+					haystack = nfound;
+					break;
 					}
 			}
 			if (!needle[n])
@@ -40,5 +43,5 @@ char *_strstr(char *haystack, char *needle)
 		haystack++;
 	}
 
-	return ('\0');
+	return (haystack);/*haystack is already at null character*/
 }
