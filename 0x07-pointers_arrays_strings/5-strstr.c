@@ -43,5 +43,5 @@ char *_strstr(char *haystack, char *needle)
 		haystack++;
 	}
 
-	return (haystack);/*haystack is already at null character*/
+	return ("\0");
 }
