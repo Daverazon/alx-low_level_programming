@@ -22,16 +22,10 @@ int main(int argc, char *argv[])
 {
 	int value, sum = 0;
 
-	while (--argc)
-	{
+		while ()
+
+	for (sum = 0; --argc; sum += value)
 		value = atoi(*(argv += 1));
-		if (value == 0 && **argv != '0')
-		{
-			printf("Error\n");
-			return (1);
-		}
-		sum += value;
-	}
 	printf("%d\n", sum);
 	return (0);
 }
