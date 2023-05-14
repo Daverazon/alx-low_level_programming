@@ -1,3 +1,11 @@
+/*
+* Write a program that adds positive numbers.
+* Print the result, followed by a new line
+* If one of the number contains symbols that are not digits,
+* print Error, followed by a new line, and return 1
+* You can assume that numbers and the addition of all
+* the numbers can be stored in an int
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -12,23 +20,18 @@
  */
 int main(int argc, char *argv[])
 {
-	int num, digit, sum = 0;
+	int value, sum = 0;
 
-	for (num = 1; num < argc; num++)
+	while (--argc)
 	{
-		for (digit = 0; argv[num][digit]; digit++)
+		value = atoi(*(argv += 1));
+		if (value == 0 && **argv != '0')
 		{
-			if (argv[num][digit] < '0' || argv[num][digit] > '9')
-			{
-				printf("Error\n");
-				return (1);
-			}
+			printf("Error\n");
+			return (1);
 		}
-
-		sum += atoi(argv[num]);
+		sum += value;
 	}
-
 	printf("%d\n", sum);
-
 	return (0);
 }

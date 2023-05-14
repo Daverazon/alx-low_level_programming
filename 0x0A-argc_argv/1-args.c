@@ -1,3 +1,7 @@
+/*
+* Write a program that prints the number of arguments passed into it.
+* Your program should print a number, followed by a new line
+*/
 #include <stdio.h>
 
 /**
@@ -8,9 +12,9 @@
  */
 int main(int argc, char *argv[])
 {
-	(void)argv;/*silence arguments*/
+	(void)argv;
 
-	printf("%d\n", argc - 1);
+	printf("%d\n", argc);
 
 	return (0);
 }
