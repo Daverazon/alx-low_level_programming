@@ -29,7 +29,7 @@ char *_strstr(char *haystack, char *needle)
 
 			for (n = 0; *haystack++ == needle[n++];)
 			{
-				if (!(*haystack && needle[n]))
+				if (!needle[n])
 					return (nfound);
 			}
 			--haystack;/*on half-match, return haystack
