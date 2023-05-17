@@ -19,7 +19,7 @@ char *str_concat(char *s1, char *s2)
 {
 	int size = 0, size1 = 0;
 	char *str;
-	
+
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
