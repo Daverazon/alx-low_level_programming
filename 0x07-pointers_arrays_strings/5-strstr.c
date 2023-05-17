@@ -6,6 +6,7 @@
 * NULL if the substring is not found.
 */
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _strstr - locates a substring
@@ -38,6 +39,8 @@ char *_strstr(char *haystack, char *needle)
 		}
 
 	}
-
-	return (--haystack);
+	return ('\0');/*the strstr doesn't return --haystack to return
+	* null if substring isn't found, instead it gives a segfault. So I'll
+	* return a char instead of char * to cause a segfault
+	*/
 }
