@@ -20,12 +20,21 @@
  */
 int main(int argc, char *argv[])
 {
-	int value, sum = 0;
+	int arr_index, sum = 0;
+	char *str_start;
 
-		while ()
+	for (arr_index = 1; arr_index < argc; sum += atoi(str_start), arr_index++)
+	{
+		str_start = argv[arr_index];
+		while (*argv[arr_index])
+		{
+			if ((*argv[arr_index] < '0' || *argv[arr_index] > '9')
+			 && *argv[arr_index] != '-')
+				return (0);
+			argv[arr_index]++;
+		}
+	}
 
-	for (sum = 0; --argc; sum += value)
-		value = atoi(*(argv += 1));
 	printf("%d\n", sum);
 	return (0);
 }
