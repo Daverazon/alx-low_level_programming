@@ -1,3 +1,10 @@
+/*
+* Write a function that concatenates two strings.
+* The returned pointer should point to a newly allocated space in memory which
+* contains the contents of s1, followed by the contents of s2, and null
+* terminated if NULL is passed, treat it as an empty string
+* The function should return NULL on failure
+*/
 #include "main.h"
 #include <stdlib.h>
 
@@ -10,28 +17,27 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *concat_str;
-	int index, concat_index = 0, len = 0;
-
-	if (s1 == NULL)
+	int size = 0, size1 = 0;
+	char *str;
+	if (!*s1)
 		s1 = "";
-
-	if (s2 == NULL)
+	if (!*s2)
 		s2 = "";
 
-	for (index = 0; s1[index] || s2[index]; index++)
-		len++;
+	while (s1[size++])
+	;
+	while (s2[size1++])
+	;
 
-	concat_str = malloc(sizeof(char) * len);
-
-	if (concat_str == NULL)
+	str = malloc(sizeof(char) * (size + size1 - 1));
+	if (str == NULL)
 		return (NULL);
 
-	for (index = 0; s1[index]; index++)
-		concat_str[concat_index++] = s1[index];
+	while (*s1++)
+		*str++ = *(s1 - 1);
+	while (*s2++)
+		*str++ = *(s2 - 1);
+	*str = '\0';
 
-	for (index = 0; s2[index]; index++)
-		concat_str[concat_index++] = s2[index];
-
-	return (concat_str);
+	return (str -= (size + size1 - 2));
 }

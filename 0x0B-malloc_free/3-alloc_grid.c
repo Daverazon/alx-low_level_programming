@@ -1,5 +1,12 @@
+/*
+* Write a function that returns a pointer to a 2 dimensional array
+* of integers. Each element of the grid should be initialized to 0
+* The function should return NULL on failure
+* If width or height is 0 or negative, return NULL
+*/
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * alloc_grid - Returns a pointer to a 2-dimensional array of
@@ -12,36 +19,27 @@
  */
 int **alloc_grid(int width, int height)
 {
-	int **twoD;
-	int hgt_index, wid_index;
+	int **arr, row, column;
 
-	if (width <= 0 || height <= 0)
+	if (width < 1 || height < 1)
 		return (NULL);
 
-	twoD = malloc(sizeof(int *) * height);
-
-	if (twoD == NULL)
+	arr = malloc(sizeof(int *) * height);
+	if (arr == NULL)
 		return (NULL);
 
-	for (hgt_index = 0; hgt_index < height; hgt_index++)
+	for (column = 0; column < width; column++)
 	{
-		twoD[hgt_index] = malloc(sizeof(int) * width);
-
-		if (twoD[hgt_index] == NULL)
-		{
-			for (; hgt_index >= 0; hgt_index--)
-				free(twoD[hgt_index]);
-
-			free(twoD);
+		*(arr + column) = malloc(sizeof(int) * width);
+		if (*(arr + column) == NULL)
 			return (NULL);
-		}
 	}
 
-	for (hgt_index = 0; hgt_index < height; hgt_index++)
+	for (row = 0; row < height; row++)
 	{
-		for (wid_index = 0; wid_index < width; wid_index++)
-			twoD[hgt_index][wid_index] = 0;
+		for (column = 0; column < width; column++)
+			*(*(arr + row) + column) = 0;
 	}
 
-	return (twoD);
+	return (arr);
 }
