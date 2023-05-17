@@ -37,7 +37,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	for (index = 0; *s1; index++)
 		str[index] = *s1++;
-	printf("%d\n", index);
+
 	for (index1 = 0; s2[index1] && index1 < n; index1++)
 		str[index++] = s2[index1];
 	while (index1++ < n)
