@@ -30,10 +30,10 @@ int main(int argc, char *argv[])
 		{
 			if ((*argv[arr_index] < '0' || *argv[arr_index] > '9')
 			 && *argv[arr_index] != '-')
-			 {
+			{
 				printf("Error\n");
 				return (0);
-			 }
+			}
 			argv[arr_index]++;
 		}
 	}
