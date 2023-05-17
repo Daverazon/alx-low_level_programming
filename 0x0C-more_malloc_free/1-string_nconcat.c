@@ -1,6 +1,14 @@
+/*
+* Write a function that concatenates two strings.
+* The returned pointer shall point to a newly allocated space in memory,
+* which contains s1, followed by the first n bytes of s2, and null terminated
+* If the function fails, it should return NULL
+* If n is greater or equal to the length of s2 then use the entire string s2
+* if NULL is passed, treat it as an empty string
+*/
 #include "main.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
  * string_nconcat - concatenates two strings
  * @s1: string 1
@@ -12,33 +20,28 @@
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i = 0, j = 0, new1 = 0;
-	char *new = 0;
+	char *str;
+	unsigned int index = 0, index1;
 
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
 		s2 = "";
 
-	while (s1[i])
-		i++;
-	/*i is now the index of the null byte in s1*/
-	new = malloc(sizeof(char) * (i + n + 2));
-	if (new == NULL)
+	while (s1[index++])
+	;
+
+	str = malloc(sizeof(char) * (index + n));
+	if (str == NULL)
 		return (NULL);
 
-	while (new1 < i)
-	{
-		new[new1] = s1[new1];
-		new1++;
-	}
-	while (j < n)
-	{
-		new[new1] = s2[j];
-		new1++;
-		j++;
-	}
-	new[new1] = '\0';
+	for (index = 0; *s1; index++)
+		str[index] = *s1++;
+	printf("%d\n", index);
+	for (index1 = 0; s2[index1] && index1 < n; index1++)
+		str[index++] = s2[index1];
+	while (index1++ < n)
+		str[index++] = 0;
 
-	return (new);
+	return (str);
 }
