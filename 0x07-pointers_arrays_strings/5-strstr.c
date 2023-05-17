@@ -19,33 +19,25 @@ char *_strstr(char *haystack, char *needle)
 	int n;
 	char *nfound;
 
-	if (*needle == 0)
+	if (!*needle)
 		return (haystack);
 
-	while (*haystack)
+	while (*haystack++)
 	{
-		n = 0;
-		if (*haystack == needle[n])
-		{
-			nfound = haystack;
-			for (; needle[n]; haystack++, n++)
+		if (*(haystack - 1) == *needle)
+		{	nfound = --haystack;
+
+			for (n = 0; *haystack++ == needle[n++];)
 			{
-				if (*haystack != needle[n])
-				{
-					haystack = nfound;
-					break;
-					}
+				if (!(*haystack && needle[n]))
+					return (nfound);
 			}
-			if (!needle[n])
-				return (nfound);
+			--haystack;/*on half-match, return haystack
+			* to differing character for check with start of needle
+			*/
 		}
-		haystack++;
 
 	}
 
-	return ("\0");
-	/*
-	* or you can just return (haystack) since at this point
-	* the pointer will be on the null character
-	*/
+	return (--haystack);
 }
