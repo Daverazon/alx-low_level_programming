@@ -3,6 +3,11 @@
 * followed by a new line.
 * You are allowed to use the standard library
 */
+/**
+ * main - check the code
+ *
+ * Return: Always 0
+*/
 #include <stdio.h>
 
 int main(void)
