@@ -21,7 +21,7 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *str;
-	unsigned int index = 0, index1;
+	unsigned int index = 0;
 
 	if (s1 == NULL)
 		s1 = "";
@@ -29,19 +29,18 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		s2 = "";
 
 	while (s1[index++])
-	;
-
-	str = malloc(sizeof(char) * (index + n));
+		n++;
+	/* n is index of first null character for concatenated string*/
+	str = malloc(sizeof(char) * (n + 1));
 	if (str == NULL)
 		return (NULL);
 
-	for (index = 0; *s1; index++)
-		str[index] = *s1++;
+	for (index = 0; s1[index]; index++)
+		str[index] = s1[index];
 
-	for (index1 = 0; s2[index1] && index1 < n; index1++)
-		str[index++] = s2[index1];
-	while (index1++ < n)
-		str[index++] = 0;
+	for (; *s2 && index < n; index++)
+		str[index] = *s2++;
+	str[index] = 0;
 
 	return (str);
 }
