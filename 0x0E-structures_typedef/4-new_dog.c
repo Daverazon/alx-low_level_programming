@@ -7,13 +7,13 @@
 #include <stdlib.h>
 
 /**
- * strlen - measures the length of a string
+ * _strlen - measures the length of a string
  * @str: measures to checked
  * Return: length of the string
 */
-long unsigned int _strlen(char *str)
+unsigned long int _strlen(char *str)
 {
-	long unsigned int len = 0;
+	unsigned long int len = 0;
 
 	while (str[len])
 		len++;
@@ -21,10 +21,9 @@ long unsigned int _strlen(char *str)
 }
 
 /**
- * strcpy: copies the string pointed to by src including the '\0'
+ * _strcpy - copies the string pointed to by src including the '\0'
  * @dest: string to be updated
  * @src: string to be copied
- * Return: updated string
 */
 void _strcpy(char *dest, char *src)
 {
@@ -47,10 +46,12 @@ void _strcpy(char *dest, char *src)
 */
 dog_t *new_dog(char *name, float age, char *owner)
 {
+	dog_t *new_dog;
+
 	if (!(name && owner && age > 0))
 		return (NULL);
-	dog_t *new_dog = malloc(sizeof(dog_t));
 
+	new_dog = malloc(sizeof(dog_t));
 	if (new_dog == NULL)
 		return (NULL);
 	new_dog->name = malloc(sizeof(char) * (_strlen(name) + 1));
