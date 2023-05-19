@@ -47,6 +47,8 @@ void _strcpy(char *dest, char *src)
 */
 dog_t *new_dog(char *name, float age, char *owner)
 {
+	if (!(name && owner && age > 0))
+		return (NULL);
 	dog_t *new_dog = malloc(sizeof(dog_t));
 
 	if (new_dog == NULL)
