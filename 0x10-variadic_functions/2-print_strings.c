@@ -1,31 +1,38 @@
+/*
+* Write a function that prints argsings, followed by a new line.
+* where separator is the argsing to be printed between the argsings
+* and n is the number of argsings passed to the function
+* You are allowed to use printf
+* If separator is NULL, don’t print it
+* If one of the argsing is NULL, print (nil) instead
+* Print a new line at the end of your function
+*/
 #include "variadic_functions.h"
 #include <stdio.h>
 #include <stdarg.h>
 
 /**
  * print_strings - prints strings
- * @separator: string to be printed between the strings
+ * @separator: string to be printed between the string
  * @n: number of strings to be passed to the function
  */
 void print_strings(const char *separator, const unsigned int n, ...)
 {
-	va_list margs;
-	unsigned int i;
-	char *temp;
+	unsigned int count = 0;
+	va_list args;
+	char *str;
 
-	va_start(margs, n);
-	for (i = 0; i < n; i++)
+	va_start(args, n);
+	while (count++ < n)
 	{
-		temp = va_arg(margs, char *);
-
-		if (temp == NULL)
-			printf("(nil)");
+		str = va_arg(args, char *);
+		if (str)
+			printf("%s", str);
 		else
-			printf("%s", temp);
-		if (separator != NULL && i != n - 1)
+			printf("(nil)");
+		if (separator && count < n)
 			printf("%s", separator);
 	}
-	printf("\n");
-
-	va_end(margs);
+	putchar('\n');
+	va_end(args);
 }
