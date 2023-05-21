@@ -49,8 +49,11 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	if (strlen(argv[2]) != 1)
+	switch (strlen(argv[2]))
 	{
+	case 1:
+		break;
+    default:
 		printf("Error\n");
 		exit(99);
 	}
@@ -69,7 +72,7 @@ int main(int argc, char *argv[])
 	if (operation == NULL)
 	{
 		printf("Error\n");
-		exit(97);
+		exit(99);
 	}
 
 	printf("%d\n", operation(num1, num2));
