@@ -29,6 +29,7 @@ void print_all(const char * const format, ...)
 {
 	va_list args;
 	int index = 0;
+	float fl;
 	char *str;
 
 	va_start(args, format);
@@ -43,7 +44,8 @@ void print_all(const char * const format, ...)
 				printf("%c", va_arg(args, int));
 				break;
 			case 'f':
-				printf("%f", va_arg(args, double));
+				fl = va_arg(args, double);
+				printf("%f", fl);
 				break;
 			case 's':
 				str = va_arg(args, char *);
