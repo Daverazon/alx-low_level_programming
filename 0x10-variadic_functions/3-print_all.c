@@ -28,43 +28,36 @@
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	int index = 0, check = 0;
+	int index = 0;
 	char *str;
 
 	va_start(args, format);
-
-
 	while (format[index])
 	{
 		switch (format[index])
 		{
 			case 'i':
 				printf("%d", va_arg(args, int));
-				check += 1;
 				break;
 			case 'c':
 				printf("%c", va_arg(args, int));
-				check += 1;
 				break;
 			case 'f':
 				printf("%f", va_arg(args, double));
-				check += 1;
 				break;
 			case 's':
 				str = va_arg(args, char *);
 				if (!str)
 				{
 					printf("(nil)");
-					check += 1;
 					break;
 				}
 				printf("%s", str);
-				check += 1;
 				break;
 		}
-		if (check > 0 && format[index + 1])
+		if ((format[index] == 'i' || format[index] == 'c' ||
+		 format[index] == 'f' || format[index] == 's') && format[index + 1])
 			printf(", ");
-		check = 0;
 		index++;
 	}
 	printf("\n");
