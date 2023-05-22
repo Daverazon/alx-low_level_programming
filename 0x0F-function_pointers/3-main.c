@@ -49,23 +49,10 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	switch (strlen(argv[2]))
-	{
-	case 1:
-		break;
-    default:
-		printf("Error\n");
-		exit(99);
-	}
+
 	num1 = atoi(argv[1]);
 	operator = argv[2];
 	num2 = atoi(argv[3]);
-
-	if ((*operator == '/' || *operator == '%') && num2 == 0)
-	{
-		printf("Error\n");
-		exit(100);
-	}
 
 	operation = get_op_func(operator);
 
@@ -73,6 +60,12 @@ int main(int argc, char *argv[])
 	{
 		printf("Error\n");
 		exit(99);
+	}
+
+	if ((*operator == '/' || *operator == '%') && num2 == 0)
+	{
+		printf("Error\n");
+		exit(100);
 	}
 
 	printf("%d\n", operation(num1, num2));

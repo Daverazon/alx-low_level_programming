@@ -38,7 +38,7 @@ int (*get_op_func(char *s))(int num1, int num2)
 
 	while (i < 5)
 	{
-		if (*s == *(ops[i].op))
+		if (*s == *(ops[i].op) && strlen(s) == 1)
 			return (ops[i].f);
 		i++;
 	}
