@@ -7,6 +7,6 @@
  */
 int main(void)
 {
-	print_all("fs", 65.76, "stSchool");
+	print_all(NULL);
 	return (0);
 }
