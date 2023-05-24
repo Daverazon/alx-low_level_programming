@@ -1,3 +1,9 @@
+/*
+* Write a function that returns the sum of all the data (n) of a listint_t
+* linked list.
+* Prototype: int sum_listint(listint_t *head);
+* if the list is empty, return 0
+*/
 #include "lists.h"
 
 /**
@@ -11,12 +17,12 @@
 int sum_listint(listint_t *head)
 {
 	int sum = 0;
+	listint_t *node = head;
 
-	while (head)
+	while (node)
 	{
-		sum += head->n;
-		head = head->next;
+		sum += node->n;
+		node = node->next;
 	}
-
 	return (sum);
 }

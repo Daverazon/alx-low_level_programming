@@ -1,3 +1,8 @@
+/*
+* Write a function that returns the nth node of a listint_t linked list.
+* where index is the index of the node, starting at 0
+* if the node does not exist, return NULL
+*/
 #include "lists.h"
 
 /**
@@ -11,15 +16,11 @@
  */
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	unsigned int node;
+	listint_t *nodeFind = head;
 
-	for (node = 0; node < index; node++)
-	{
-		if (head == NULL)
-			return (NULL);
-
-		head = head->next;
-	}
-
-	return (head);
+	while (nodeFind && index--)
+		nodeFind = nodeFind->next;
+	if (nodeFind)
+		return (nodeFind);
+	return (nodeFind);
 }

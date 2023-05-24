@@ -1,3 +1,9 @@
+/*
+* Write a function that deletes the head node of a listint_t linked list, and
+* returns the head node’s data (n).
+* Prototype: int pop_listint(listint_t **head);
+* if the linked list is empty return 0
+*/
 #include "lists.h"
 
 /**
@@ -10,17 +16,16 @@
  */
 int pop_listint(listint_t **head)
 {
-	listint_t *tmp;
-	int ret;
+	int n = 0;
+	listint_t *pop;
 
-	if (*head == NULL)
-		return (0);
+	if (head && *head)
+	{
+		n = (*head)->n;
+		pop = *head;
+		*head = (*head)->next;
+		free(pop);
+	}
 
-	tmp = *head;
-	ret = (*head)->n;
-	*head = (*head)->next;
-
-	free(tmp);
-
-	return (ret);
+	return (n);
 }
