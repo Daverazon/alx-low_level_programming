@@ -22,15 +22,26 @@
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *nodeFind;/*initialize with start of list when sure head != NULL*/
+	listint_t *indexNode;/*initialize with start of list when sure head != NULL*/
+	listint_t *beforeIndex;/*need node before index to hold address of next node*/
 	listint_t *newNode;/*allocate memory when sure node can be inserted*/
 
 	if (!head)
 		return (NULL);
-	nodeFind = *head;
+	indexNode = *head;
 
-	while (nodeFind && idx--)
-		nodeFind = nodeFind->next;
-	if ()
-
+	while (indexNode && idx--)
+	{
+		beforeIndex = indexNode;
+		indexNode = indexNode->next;
+	}
+	if (!indexNode && idx > 0)
+		return (NULL);
+	newNode = malloc(sizeof(listint_t));
+	if (!newNode)
+		return (NULL);
+	newNode->n = n;
+	beforeIndex->next = newNode;
+	newNode->next = indexNode;
+	return (newNode);
 }
