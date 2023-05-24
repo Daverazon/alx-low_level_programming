@@ -26,8 +26,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	listint_t *beforeIndex;/*need node before index to hold address of next node*/
 	listint_t *newNode;/*allocate memory when sure node can be inserted*/
 
-	if (!head)
-		return (NULL);
 	indexNode = *head;
 	newNode = malloc(sizeof(listint_t));
 	if (!newNode)
