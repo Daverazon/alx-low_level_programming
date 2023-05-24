@@ -1,3 +1,7 @@
+/*
+* Write a function that returns number of elements in a linked listint_t list.
+* Prototype: size_t listint_len(const listint_t *h);
+*/
 #include "lists.h"
 #include <stdio.h>
 
@@ -10,13 +14,12 @@
  */
 size_t listint_len(const listint_t *h)
 {
-	size_t nodes = 0;
+	size_t count = 0;
 
 	while (h)
 	{
-		nodes++;
+		count++;
 		h = h->next;
 	}
-
-	return (nodes);
+	return (count);
 }

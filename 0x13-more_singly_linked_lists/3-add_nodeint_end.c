@@ -1,3 +1,8 @@
+/*
+* Write a function that adds a new node at the end of a listint_t list.
+* Prototype: listint_t *add_nodeint_end(listint_t **head, const int n);
+* Return: the address of the new element, or NULL if it failed
+*/
 #include "lists.h"
 
 /**
@@ -12,25 +17,23 @@
  */
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	listint_t *new, *last;
+	listint_t *lastNode;
+	listint_t *newNode = malloc(sizeof(listint_t));
 
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
+	if (!newNode)
 		return (NULL);
-
-	new->n = n;
-	new->next = NULL;
-
-	if (*head == NULL)
-		*head = new;
-
-	else
+	newNode->n = n;
+	newNode->next = NULL;
+	if (!*head)
 	{
-		last = *head;
-		while (last->next != NULL)
-			last = last->next;
-		last->next = new;
+		*head = newNode;
+		return (newNode);
 	}
 
-	return (*head);
+	lastNode = *head;
+	while (lastNode->next)
+		lastNode = lastNode->next;
+	lastNode->next = newNode;
+
+	return (newNode);
 }

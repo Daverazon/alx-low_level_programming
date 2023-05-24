@@ -1,3 +1,7 @@
+/*
+* Write a function that frees a listint_t list.
+* Prototype: void free_listint(listint_t *head);
+*/
 #include "lists.h"
 
 /**
@@ -6,12 +10,12 @@
  */
 void free_listint(listint_t *head)
 {
-	listint_t *tmp;
+	listint_t *temp;
 
 	while (head)
 	{
-		tmp = head->next;
+		temp = head->next;
 		free(head);
-		head = tmp;
+		head = temp;
 	}
 }

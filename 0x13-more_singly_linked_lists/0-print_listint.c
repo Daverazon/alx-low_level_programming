@@ -1,3 +1,10 @@
+/*
+* Write a function that prints all the elements of a listint_t list.
+* Prototype: size_t print_listint(const listint_t *h);
+* Return: the number of nodes
+* Format: see example
+* You are allowed to use printf
+*/
 #include "lists.h"
 #include <stdio.h>
 
@@ -9,14 +16,13 @@
  */
 size_t print_listint(const listint_t *h)
 {
-	size_t nodes = 0;
+	size_t count = 0;
 
 	while (h)
 	{
-		nodes++;
 		printf("%d\n", h->n);
+		count++;
 		h = h->next;
 	}
-
-	return (nodes);
+	return (count);
 }

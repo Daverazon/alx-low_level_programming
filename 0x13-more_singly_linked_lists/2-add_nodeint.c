@@ -1,3 +1,8 @@
+/*
+* Write a function that adds a new node at the beginning of a listint_t list.
+* Prototype: listint_t *add_nodeint(listint_t **head, const int n);
+* Return: the address of the new element, or NULL if it failed
+*/
 #include "lists.h"
 
 /**
@@ -12,16 +17,12 @@
  */
 listint_t *add_nodeint(listint_t **head, const int n)
 {
-	listint_t *new;
+	listint_t *newNode = malloc(sizeof(listint_t));
 
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
+	if (!newNode)
 		return (NULL);
-
-	new->n = n;
-	new->next = *head;
-
-	*head = new;
-
-	return (new);
+	newNode->next = *head;
+	*head = newNode;
+	newNode->n = n;
+	return (newNode);
 }
