@@ -1,3 +1,11 @@
+/*
+* Write a function that prints the binary representation of a number.
+* Prototype: void print_binary(unsigned long int n);
+* Format: see example
+* You are not allowed to use arrays
+* You are not allowed to use malloc
+* You are not allowed to use the % or / operators
+*/
 #include "main.h"
 
 /**
@@ -6,8 +14,30 @@
  */
 void print_binary(unsigned long int n)
 {
-	if (n > 1)
-		print_binary(n >> 1);
+	int bit_shift = 31;/*assume type is 32 bit long*/
+	int shifted;
 
-	_putchar((n & 1) + '0');
+	if (n == 0)
+	{
+		_putchar('0');
+		return;
+	}
+
+	while (bit_shift >= 0)
+	{
+		shifted = n >> bit_shift--;
+		if (shifted & 1)
+		{
+			_putchar('1');
+			break;
+		}
+	} /*Only start printing when you see a bit set to 1*/
+	while (bit_shift >= 0)
+	{
+		shifted = n >> bit_shift--;
+		if (shifted & 1)
+			_putchar('1');
+		else
+			_putchar('0');
+	}
 }
