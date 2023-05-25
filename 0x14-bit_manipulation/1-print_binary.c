@@ -14,7 +14,7 @@
  */
 void print_binary(unsigned long int n)
 {
-	int bit_shift = 31;/*assume type is 32 bit long*/
+	int bit_shift = 63;/*assume type is 32 bit long*/
 	int shifted;
 
 	if (n == 0)
