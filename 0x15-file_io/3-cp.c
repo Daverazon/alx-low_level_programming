@@ -10,7 +10,8 @@
 * new line, on the POSIX standard error
 * where NAME_OF_THE_FILE is the first argument passed to your program
 * if you can not create or if write to file_to fails, exit with code 99 and
-* print Error: Can't write to NAME_OF_THE_FILE, followed by a new line, on the POSIX standard error
+* print Error: Can't write to NAME_OF_THE_FILE, followed by a new line, on
+* the POSIX standard error
 * where NAME_OF_THE_FILE is the second argument passed to your program
 * if you can not close a file descriptor , exit with code 100 and print Error:
 * Can't close fd FD_VALUE, followed by a new line, on the POSIX standard error
@@ -23,19 +24,63 @@
 */
 #include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
-
-char *create_buffer(char *file);
-void close_file(int fd);
+#include <sys/stat.h>
 
 /**
- * create_buffer - Allocates 1024 bytes for a buffer.
- * @file: The name of the file buffer is storing chars for.
- *
- * Return: A pointer to the newly-allocated buffer.
+ * copy_file - copies a file's contents into another file
+ * @src: source file
+ * @dest: destination file
  */
-char *create_buffer(char *file)
+void copy_file(const char *src, const char *dest)
 {
+	mode_t old_umask = umask(0);
+	int sfd = open(src, O_RDONLY);
+	int dfd = open(dest, O_TRUNC | O_WRONLY | O_CREAT | O_APPEND, 0664);
+	int w, r;
+	char buffer[1024];
 
+	umask(old_umask);
+	while ((r = read(sfd, buffer, 1024)) > 0)
+	{
+		lseek(sfd, r, SEEK_CUR);
+		w = write(dfd, buffer, r);
+	}
+	if (r == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s", src);
+		exit(98);
+	}
+	if (w == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s", dest);
+		exit(99);
+	}
 
+	if (close(sfd) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d", sfd);
+		exit(100);
+	}
+	if (close(dfd) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d", dfd);
+		exit(100);
+	}
+}
+
+/**
+ * main - calls the copy function
+ * @argc: no. of arguments in terminal plus executable
+ * @argv: array of pointers to arguments in terminal plus executable
+ * Return: always returns 0
+*/
+int main(int argc, char *argv[])
+{
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp %s %s", argv[1], argv[2]);
+		exit(97);
+	}
+	copy_file(argv[1], argv[2]);
+	return (0);
 }
