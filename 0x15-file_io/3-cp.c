@@ -42,7 +42,6 @@ void copy_file(const char *src, const char *dest)
 	umask(old_umask);
 	while ((r = read(sfd, buffer, 1024)) > 0)
 	{
-		lseek(sfd, r, SEEK_CUR);
 		w = write(dfd, buffer, r);
 	}
 	if (r == -1)
@@ -78,7 +77,7 @@ int main(int argc, char *argv[])
 {
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp %s %s", argv[1], argv[2]);
+		dprintf(STDERR_FILENO, "Usage: cp %s %s\n", argv[1], argv[2]);
 		exit(97);
 	}
 	copy_file(argv[1], argv[2]);
