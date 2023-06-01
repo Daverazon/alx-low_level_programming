@@ -16,7 +16,17 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
+	int bits = 64;
+	unsigned int count = 0, ntest, mtest;
 
+	while (bits)
+	{
+		ntest = n >> bits;
+		mtest = m >> bits;
 
-
+		if ((ntest & 1) ^ (mtest & 1))
+			count++;
+		bits--;
+	}
+	return (count);
 }
