@@ -9,7 +9,7 @@
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *newNode, *prevNode = NULL;
+	dlistint_t *newNode, *prevNode = NULL, *headNode = *h;
 
 	if (!h)
 		return (NULL);
@@ -22,7 +22,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 
 	if (!*h && idx != 0)
 		return (NULL);
-	/*checks if the idx is out of range*/
+	/*checks if the index is out of range*/
 
 	newNode = malloc(sizeof(dlistint_t));
 	if (!newNode)
@@ -30,13 +30,16 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	newNode->n = n;
 	newNode->next = *h;
 	newNode->prev = prevNode;
-	if (prevNode)
+	if (headNode)
+	{
 		prevNode->next = newNode;
+		*h = headNode;
+	}
 	else
 		*h = newNode;
 	/*
 	 * checks if insertion is at the beginning of an empty list
-	 * if avoids dereferencing a null pointer
+	 * if avoids dereferencing the prevNode null pointer and resets *h to the original head
 	 * else sets the new node as the head
 	 */
 
