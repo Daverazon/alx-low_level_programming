@@ -11,18 +11,16 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 	dlistint_t *newNode;
 
 	if (!head)
-		printf("efgh");
+		return (NULL);
 
 	newNode = malloc(sizeof(dlistint_t));
 	if (!newNode)
-		printf("abcd");
+		return (NULL);
 	newNode->n = n;
 	newNode->prev = NULL;
 	newNode->next = *head;
 	*head = newNode;
 
-	if (!newNode)
-		printf("fds");
 	return (newNode);
 }
 
