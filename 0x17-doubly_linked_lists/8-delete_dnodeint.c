@@ -3,7 +3,7 @@
  * delete_dnodeint_at_index - deletes the node at specified index of a
  * doubly linked list
  * @head: address of pointer the first node in the list
- * @index: index of the node that should be deleted
+ * @index: index (starts at 0) of the node that should be deleted
  * Return: 1 if it succeeded
  *        -1 if it failed
  */

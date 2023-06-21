@@ -9,45 +9,32 @@
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *newNode, *prevNode = NULL, *headNode = *h;
+	dlistint_t *newNode, *findNode, *prevNode = NULL;
 
 	if (!h)
 		return (NULL);
-	while (*h && idx--)
+	findNode = *h;
+	while (findNode && idx)
 	{
-		prevNode = *h;
-		*h = (*h)->next;
+		prevNode = findNode;
+		findNode = findNode->next;
+		idx--;
 	}
-	/*sets *h to the index we're looking for*/
-
-	if (!*h && idx != 0)
+	if (idx > 0)
 		return (NULL);
-	/*checks if the index is out of range*/
 
 	newNode = malloc(sizeof(dlistint_t));
 	if (!newNode)
 		return (NULL);
 	newNode->n = n;
-	newNode->next = *h;
 	newNode->prev = prevNode;
-	if (headNode)
-	{
+	newNode->next = findNode;
+
+	if (findNode)
+		findNode->prev = newNode;
+	if (prevNode)
 		prevNode->next = newNode;
-		*h = headNode;
-	}
 	else
 		*h = newNode;
-	/*
-	 * checks if insertion is at the beginning of an empty list
-	 * if avoids dereferencing the prevNode null pointer and resets *h to the original head
-	 * else sets the new node as the head
-	 */
-
-	if (!*h)
-		(*h)->prev = newNode;
-	/*
-	 * checks if insertion is at the end list to avoid dereferencing a
-	 * null pointer
-	 */
 	return (newNode);
-	}
+}
