@@ -4,7 +4,7 @@
  * @h: address of pointer to head of linked list
  * @idx: index of the list where the new node should be added
  * @n: an integer
- * Returns: the address of the new node, or NULL if it failed
+ * Return: the address of the new node, or NULL if it failed
  */
 
 
