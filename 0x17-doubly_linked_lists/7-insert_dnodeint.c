@@ -13,7 +13,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *findNode, *prevNode = NULL, *newNode;
 	unsigned int find = 0;
 
-	if (!h)
+	if (!h || !*h)
 		return (NULL);
 
 	findNode = *h;
@@ -36,7 +36,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	if (findNode)
 		findNode->prev = newNode;
 
-	/*creating a new list or inserting at head*/
+	/*inserting at head*/
 	if (find == 0)
 		*h = newNode;
 
