@@ -62,7 +62,7 @@ char *value, unsigned long int index)
 
 	while (item)
 	{
-		if (strcmp(key, item->key))
+		if (strcmp(key, item->key) == 0)
 		{
 			/*
 			 * recall that your item value was malloced a location to
