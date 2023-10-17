@@ -17,9 +17,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	index = key_index((const unsigned char *)key, ht->size);
 	/*item if key already exists so just update value*/
-	update_value(ht, key, value, index);
+	if (update_value(ht, key, value, index))
+		return (1);
 
-	/*allocate space for the item*/
 	item = malloc(sizeof(hash_node_t));
 	if (!item)
 		return (0);
@@ -42,10 +42,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	strcpy(item->value, value);
 
-	/*
-	 * insert at index if it's unoccupied
-	 * insert at head of list if collision occurs
-	 */
 	item->next = ht->array[index];
 	ht->array[index] = item;
 	return (1);
