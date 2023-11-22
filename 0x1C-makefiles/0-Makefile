@@ -1,0 +1,4 @@
+compiler = gcc
+flags = -o
+all: main.c school.c
+	$(compiler) main.c school.c $(flags) school
